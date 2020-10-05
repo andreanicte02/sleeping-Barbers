@@ -1,6 +1,7 @@
 package com.company.Utilidades;
 
-public class Flow {
+public class Flow extends Thread{
+
 
 
 

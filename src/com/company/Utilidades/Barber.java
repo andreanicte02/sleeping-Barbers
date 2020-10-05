@@ -6,10 +6,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Barber  extends Thread{
 
     boolean isAsSleep = true;
+    JButton icon;
     BarberShop barberShop;
 
 
-    public Barber(BarberShop barberShop){
+
+    public Barber(BarberShop barberShop, JButton icon){
         this.barberShop = barberShop;
 
     }
@@ -44,6 +46,16 @@ public class Barber  extends Thread{
         System.out.println("se despeto");
         isAsSleep = false;
         notify();
+    }
+
+    public synchronized void cutHair() throws InterruptedException {
+
+
+        int n = (int) (Math.random() * (8000 - 5000)) + 5000;
+        System.out.println("....cortando el pelo");
+        Thread.sleep(n);
+
+
     }
 
 
