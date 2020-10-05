@@ -4,6 +4,7 @@ import com.company.Utilidades.BarberShop;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.IOException;
 
@@ -30,9 +31,11 @@ public class Gui extends JFrame {
 
         this.button1.setText("");
         this.button1.setEnabled(false);
+        this.button1.setBackground(Color.blue);
 
         this.button2.setText("");
         this.button2.setEnabled(false);
+        this.button2.setBackground(Color.white);
 
         this.textField1.setEditable(false);
 

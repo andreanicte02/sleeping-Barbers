@@ -37,7 +37,7 @@ public class BarberShop extends Thread {
                 Thread.sleep(n);
                 System.out.println("creando al cliente no: " + Utils.n);
                 console.setText(console.getText() + "creando al cliente no: " + Utils.n +";\n");
-                Client client = new Client(barber, this, Utils.n, console, led);
+                Client client = new Client(barber, this, Utils.n, console, led,iconClient);
                 Utils.n++;
                 client.start();
 
@@ -54,9 +54,9 @@ public class BarberShop extends Thread {
 
 
 
-    public void  addClient(Client client){
+    public void  startC(Client client){
 
-        this.listClient.add(client);
+
     }
 
 
