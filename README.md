@@ -101,8 +101,7 @@ Hilo, donde se realiza el manejo de los estados del barbero.
 ##### Atributos:
 
 ```java
-    Barber barber; //el barbero unico el cual le va atender
-    BarberShop barberShop; 
+     BarberShop barberShop; 
     int id;
 ```
 
@@ -124,9 +123,9 @@ Aquí es donde se hace uso de los métodos synchronized del barbero, ya que al d
             }
             if(this.barber.isAsSleep){
                     
-                this.barber.wakeup();
-                this.barber.cutHair(icon);
-                this.barber.sleep();
+                this.barberShop.getBarber().wakeup();
+                this.barberShop.getBarber().cutHair(icon);
+                this.barberShop.getBarber().sleep();
                 break;
             }
         }

@@ -55,7 +55,7 @@ public class Gui extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("creando al cliente no: " + Utils.n);
                 textArea1.setText(textArea1.getText() + "creando al cliente no: " + Utils.n +";\n");
-                Client client = new Client(barberSop.getBarber(), barberSop, Utils.n, textArea1, textField1, button2,ocupadoButton);
+                Client client = new Client( barberSop, Utils.n, textArea1, textField1, button2,ocupadoButton);
                 Utils.n++;
                 client.start();
             }

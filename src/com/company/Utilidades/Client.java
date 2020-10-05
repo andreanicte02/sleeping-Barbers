@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Client extends Thread{
 
-    Barber barber;
+
     BarberShop barberShop;
     int id;
     JTextArea console;
@@ -14,8 +14,8 @@ public class Client extends Thread{
     JButton icon;
     JButton iconBusy;
 
-    public Client(Barber barber, BarberShop barberShop, int id, JTextArea console, JTextField led, JButton icon, JButton iconBusy){
-        this.barber = barber;
+    public Client(BarberShop barberShop, int id, JTextArea console, JTextField led, JButton icon, JButton iconBusy){
+
         this.barberShop = barberShop;
         this.id = id;
         this.console = console;
@@ -32,23 +32,23 @@ public class Client extends Thread{
             try {
 
 
-                if(!this.barber.isAsSleep){
+                if(!this.barberShop.getBarber().isAsSleep){
                     System.out.println("ocupado");
                     iconBusy.setBackground(Color.red);
                     continue;
                 }
 
                 iconBusy.setBackground(Color.white);
-                if(this.barber.isAsSleep){
+                if(this.barberShop.getBarber().isAsSleep){
 
-                    this.barber.wakeup();
+                    this.barberShop.getBarber().wakeup();
                     this.led.setText("atendiendo al c no. " + id);
-                    this.barber.cutHair(icon);
+                    this.barberShop.getBarber().cutHair(icon);
                     this.led.setText("");
                     System.out.println("$cliente no. " + id +" ya fue atendido");
                     this.console.setText(console.getText().replace("creando al cliente no: " + id +";\n",""));
                     this.icon.setBackground(Color.white);
-                    this.barber.sleep();
+                    this.barberShop.getBarber().sleep();
                     break;
                 }
 

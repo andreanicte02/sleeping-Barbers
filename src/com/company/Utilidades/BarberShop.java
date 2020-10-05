@@ -32,8 +32,8 @@ public class BarberShop extends Thread {
         barber.start();
         while (true);
 
-
     }
+
 
 
 
