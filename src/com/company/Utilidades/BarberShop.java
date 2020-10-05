@@ -12,6 +12,7 @@ public class BarberShop extends Thread {
         return barber;
     }
 
+    //hilo principal
     private Barber barber;
     List listClient = new ArrayList();
     JButton iconBarber;
@@ -34,12 +35,6 @@ public class BarberShop extends Thread {
 
     }
 
-
-
-    public void  startC(Client client){
-
-
-    }
 
 
 
