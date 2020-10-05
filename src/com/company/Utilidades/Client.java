@@ -12,14 +12,17 @@ public class Client extends Thread{
     JTextArea console;
     JTextField led;
     JButton icon;
+    JButton iconBusy;
 
-    public Client(Barber barber, BarberShop barberShop, int id, JTextArea console, JTextField led, JButton icon){
+    public Client(Barber barber, BarberShop barberShop, int id, JTextArea console, JTextField led, JButton icon, JButton iconBusy){
         this.barber = barber;
         this.barberShop = barberShop;
         this.id = id;
         this.console = console;
         this.led = led;
         this.icon = icon;
+        this.iconBusy = iconBusy;
+
     }
     @Override
     public void run() {
@@ -29,6 +32,13 @@ public class Client extends Thread{
             try {
 
 
+                if(!this.barber.isAsSleep){
+                    System.out.println("ocupado");
+                    iconBusy.setBackground(Color.red);
+                    continue;
+                }
+
+                iconBusy.setBackground(Color.white);
                 if(this.barber.isAsSleep){
 
                     this.barber.wakeup();
@@ -39,7 +49,7 @@ public class Client extends Thread{
                     this.console.setText(console.getText().replace("creando al cliente no: " + id +";\n",""));
                     this.icon.setBackground(Color.white);
                     this.barber.sleep();
-                    return;
+                    break;
                 }
 
 

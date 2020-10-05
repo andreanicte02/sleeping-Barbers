@@ -52,7 +52,7 @@ public class Barber  extends Thread{
         notify();
     }
 
-    public synchronized void cutHair(JButton iconClient) throws InterruptedException {
+    public void cutHair(JButton iconClient) throws InterruptedException {
 
 
         icon.setBackground(Color.green);

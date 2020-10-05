@@ -8,18 +8,19 @@ import java.util.Random;
 
 public class BarberShop extends Thread {
 
-    Barber barber;
-    List listClient = new ArrayList();
-    JTextArea console;
-    JTextField led;
-    JButton iconBarber;
-    JButton iconClient;
+    public Barber getBarber() {
+        return barber;
+    }
 
-    public BarberShop(JTextArea console, JTextField led, JButton iconBarber, JButton iconClient){
-        this.console = console;
-        this.led = led;
+    private Barber barber;
+    List listClient = new ArrayList();
+    JButton iconBarber;
+
+
+    public BarberShop(JButton iconBarber){
+
+
         this.iconBarber = iconBarber;
-        this.iconClient = iconClient;
         this.barber = new Barber(this, iconBarber);
 
     }
@@ -28,26 +29,7 @@ public class BarberShop extends Thread {
     @Override
     public void run() {
         barber.start();
-        while (true){
-
-
-            try {
-
-                int n = (int) (Math.random() * (3000 - 2000)) + 2000;
-                Thread.sleep(n);
-                System.out.println("creando al cliente no: " + Utils.n);
-                console.setText(console.getText() + "creando al cliente no: " + Utils.n +";\n");
-                Client client = new Client(barber, this, Utils.n, console, led,iconClient);
-                Utils.n++;
-                client.start();
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
-
-        }
+        while (true);
 
 
     }

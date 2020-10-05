@@ -1,11 +1,14 @@
 package com.company.Gui;
 
 import com.company.Utilidades.BarberShop;
+import com.company.Utilidades.Client;
+import com.company.Utilidades.Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Gui extends JFrame {
@@ -14,14 +17,16 @@ public class Gui extends JFrame {
     private JPanel root;
     private JTextArea textArea1;
     private JTextField textField1;
-    BarberShop lcd;
+    private JButton agregarButton;
+    private JButton ocupadoButton;
+    BarberShop barberSop;
     Image imageBarber;
     Image imageClient;
 
     public Gui() throws IOException {
 
         this.add(root);
-        this.setSize(500,600);
+        this.setSize(800,600);
 
         this.imageBarber = ImageIO.read(getClass().getResource("/com/company/Gui/imgbarber.png"));
         this.button1.setIcon(new ImageIcon(imageBarber));
@@ -39,8 +44,21 @@ public class Gui extends JFrame {
 
         this.textField1.setEditable(false);
 
-        this.lcd = new BarberShop(textArea1, textField1, button1,button2);
-        lcd.start();
+        this.barberSop = new BarberShop(button1);
+        barberSop.start();
 
+        this.ocupadoButton.setEnabled(false);
+        this.ocupadoButton.setBackground(Color.white);
+
+        agregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("creando al cliente no: " + Utils.n);
+                textArea1.setText(textArea1.getText() + "creando al cliente no: " + Utils.n +";\n");
+                Client client = new Client(barberSop.getBarber(), barberSop, Utils.n, textArea1, textField1, button2,ocupadoButton);
+                Utils.n++;
+                client.start();
+            }
+        });
     }
 }
